@@ -1,6 +1,7 @@
 package org.example.Practic;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -17,23 +18,28 @@ public class app extends Application {
     private Stage stage;
     private Scene scene;
     private StackPane root;
+    private main_view mainView;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         create_save.create_dir();
         TaskRepository.load_save();
-
-        stage.setOnCloseRequest(e->{
+        mainView = new main_view(this);
+        stage.setOnCloseRequest(e -> {
 
             try {
                 save_saves.save_tasks();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
+            Platform.exit();
+            System.exit(0);
 
         });
+
+
+
 
         show_main_scene();
         stage.setScene(scene);
@@ -42,8 +48,14 @@ public class app extends Application {
         System.out.println("Icon status error: " + icon.isError());
         stage.getIcons().add(icon);
 
-
         show();
+    }
+
+    public void show_windown_sort_params(main_view main_view) {
+        root.getChildren().clear();
+        window_sort_params win = new window_sort_params(this, main_view);
+        root.getChildren().add(win);
+
     }
 
     public void show_window_change_note(Task task, String text) {
@@ -69,9 +81,9 @@ public class app extends Application {
     public void show_main_scene() {
 
         root = new StackPane();
-        main_view main = new main_view(this);
-        root.getChildren().add(main);
+        root.getChildren().add(mainView);
         scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/main.css").toExternalForm());
         show();
     }
 

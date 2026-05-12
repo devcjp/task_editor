@@ -1,12 +1,14 @@
 package org.example.Practic;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.Practic.save.load_save;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {
-    private static List<Task> tasks = new ArrayList<>();
+    private static ObservableList<Task> tasks = FXCollections.observableArrayList();
     public static void load_save() throws Exception {
         tasks = load_save.load_save();
     }
@@ -26,18 +28,7 @@ public static void removeTask(Task task){
 
 }
 
-
-    public void setTask(Task task_, String name, String task) {
-        task_.setTask(name,task);
-        try {
-            // save_saves.save_tasks();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-    public static List<Task> getTasks() {
+    public static ObservableList<Task> getTasks() {
         return tasks;
     }
 }

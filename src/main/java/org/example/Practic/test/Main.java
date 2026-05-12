@@ -167,7 +167,7 @@ public class Main extends Application {
                 list, comboBox, t, btn_with_icon, rect);
 
         Scene scene = new Scene(root, 1000, 1000);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/main.css").toExternalForm());
 
         stage.setResizable(false);
         // stage.initStyle(StageStyle.UNDECORATED);

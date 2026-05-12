@@ -72,8 +72,9 @@ public class Task_Pane extends HBox {
 
         Button completed_button = new Button("Выполнено");
         completed_button.setOnAction(e -> {
+            task.set_completed(!task.get_completed());
             updateStyle(task);
-task.set_completed(!task.get_completed());
+
 
         });
 
@@ -85,11 +86,11 @@ task.set_completed(!task.get_completed());
         updateStyle(task);
     }
     private void updateStyle(Task task) {
-        if (!task.get_completed()) {
-            setStyle("-fx-background-color: red;");
+        getStyleClass().removeAll("task-pane","task-completed");
+        if (task.get_completed()) {
+            getStyleClass().add("task-completed");
         } else {
-            setStyle("-fx-background-color: #2b2b2b;" +
-                    "-fx-background-radius: 12;");
+            getStyleClass().add("task-pane");
         }
     }
     public VBox buildNoteList(app app, Task task) {
