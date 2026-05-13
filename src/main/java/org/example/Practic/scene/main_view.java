@@ -20,9 +20,20 @@ public class main_view extends BorderPane {
 
     public static SortingParams sortParam = SortingParams.BY_TIME;
     private Button sortButton;
-    public main_view(app app) {
 
+    public main_view(app app) {
         getStyleClass().add("main-root");
+
+//        HBox frame = new HBox();
+//
+//Button exit = new Button("к");
+//exit.setOnAction(e->{
+//    app.
+//
+//        }
+//        );
+//Button colapse = new Button("с");
+
 
         HBox header = new HBox(15);
 
@@ -67,7 +78,7 @@ public class main_view extends BorderPane {
                     searchButton.getStyleClass()
                             .remove("selected-orange");
 
-                    if(!newText.isEmpty()) {
+                    if (!newText.isEmpty()) {
 
                         searchButton.getStyleClass()
                                 .add("selected-orange");
@@ -78,7 +89,7 @@ public class main_view extends BorderPane {
             String query =
                     searchTextField.getText();
 
-            if(query.isEmpty()) {
+            if (query.isEmpty()) {
 
                 setCenter(
                         buildTasksList(
@@ -107,7 +118,7 @@ public class main_view extends BorderPane {
         reset.setOnAction(e -> {
 
             sortParam = SortingParams.BY_TIME;
-
+            updateHeaderState();
             searchTextField.clear();
 
             setCenter(
@@ -123,10 +134,10 @@ public class main_view extends BorderPane {
 
         sortButton.getStyleClass()
                 .add("button");
-if(sortParam!=SortingParams.BY_TIME){
-    sortButton.getStyleClass().add("selected-orange");
+        if (sortParam != SortingParams.BY_TIME) {
+            sortButton.getStyleClass().add("selected-orange");
 
-}
+        }
         sortButton.setOnAction(e -> {
             app.show_windown_sort_params(this);
         });
@@ -158,29 +169,30 @@ if(sortParam!=SortingParams.BY_TIME){
     }
 
 
-
-
     public void setSortParam(SortingParams sortParam) {
         this.sortParam = sortParam;
         updateHeaderState();
         System.out.println(this);
         System.out.println(sortParam);
     }
+
     private void updateHeaderState() {
 
         sortButton.getStyleClass()
                 .remove("selected-orange");
 
-        if(sortParam != SortingParams.BY_TIME) {
+        if (sortParam != SortingParams.BY_TIME) {
 
             sortButton.getStyleClass()
                     .add("selected-orange");
         }
     }
+
     public void refreshTasks(app app) {
 
         setCenter(buildTasksList(app, TaskRepository.getTasks()));
     }
+
     private ListView<Task> buildTasksList(app app, ObservableList<Task> tasksV) {
 
         ObservableList<Task> tasks = tasksV;

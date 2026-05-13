@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import org.example.Practic.save.create_save;
 import org.example.Practic.save.save_saves;
@@ -24,6 +25,7 @@ public class app extends Application {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         stage.setResizable(false);
+
         create_save.create_dir();
         TaskRepository.load_save();
         mainView = new main_view(this);
