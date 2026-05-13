@@ -9,7 +9,6 @@
  - Сортировка
  - Completed state
  - красивый ui
-
 ## Стэк
  - Java
  - JavaFx
