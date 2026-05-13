@@ -10,6 +10,7 @@
  - Completed state
  - красивый ui
 
+## Стэк
  - Java
  - JavaFx
  - CSS
