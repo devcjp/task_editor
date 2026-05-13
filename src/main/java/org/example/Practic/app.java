@@ -23,6 +23,7 @@ public class app extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        stage.setResizable(false);
         create_save.create_dir();
         TaskRepository.load_save();
         mainView = new main_view(this);
@@ -40,7 +41,11 @@ public class app extends Application {
 
 
 
-
+        //scene.getStylesheets().add(
+        //        getClass()
+        //                .getResource("/main.css")
+        //                .toExternalForm()
+        //);
         show_main_scene();
         stage.setScene(scene);
         stage.setTitle("Редактор задач");
@@ -84,11 +89,24 @@ public class app extends Application {
         root.getChildren().add(mainView);
         scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/main.css").toExternalForm());
+        mainView.refreshTasks(this);
         show();
     }
 
     public void show_add_task_scene() {
-        scene = new Scene(new add_task_view(this), 800, 600);
+
+        scene = new Scene(
+                new add_task_view(this),
+                800,
+                600
+        );
+
+        scene.getStylesheets().add(
+                getClass()
+                        .getResource("/main.css")
+                        .toExternalForm()
+        );
+
         show();
     }
 

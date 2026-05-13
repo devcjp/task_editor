@@ -110,7 +110,7 @@ public class Task_Pane extends HBox {
                         -fx-background-radius: 10;
                         -fx-font-size: 13px;
                     """);
-            label.setOnMouseClicked(e -> {
+            label.setOnMousePressed(e -> {
 
                 app.show_window_change_note(task, label.getText());
                 System.out.println("!!!!!");

@@ -1,3 +1,156 @@
+.root {
+
+    -fx-background-color: #1f1f1f;
+}
+
+.add-task-root {
+
+    -fx-background-color: #1f1f1f;
+}
+
+.title-label {
+
+    -fx-text-fill: #f0f0f0;
+
+    -fx-font-size: 28px;
+
+    -fx-font-weight: bold;
+}
+
+.text-field {
+
+    -fx-background-color: #2b2b2b;
+
+    -fx-text-fill: #e0e0e0;
+
+    -fx-prompt-text-fill: #7a7a7a;
+
+    -fx-background-radius: 14;
+
+    -fx-border-radius: 14;
+
+    -fx-border-color: #3f3f3f;
+
+    -fx-border-width: 1;
+
+    -fx-padding: 14;
+
+    -fx-font-size: 14px;
+
+    -fx-pref-height: 45px;
+}
+
+.text-field:focused {
+
+    -fx-border-color: #4c8bf5;
+}
+
+.button {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #3a3a3a,
+            #2f2f2f
+    );
+
+    -fx-text-fill: #e0e0e0;
+
+    -fx-font-size: 14px;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-border-radius: 12;
+
+    -fx-border-color: #4a4a4a;
+
+    -fx-border-width: 1;
+
+    -fx-padding: 10 18 10 18;
+
+    -fx-cursor: hand;
+}
+
+.button:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #4a4a4a,
+            #3a3a3a
+    );
+}
+
+.button:pressed {
+
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.button:focused {
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.accent-button {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #4c8bf5,
+            #356fe0
+    );
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14px;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 10 22 10 22;
+}
+
+.accent-button:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #5a98ff,
+            #437cf0
+    );
+}
+
+.secondary-button {
+
+    -fx-background-color: #343434;
+
+    -fx-text-fill: #d0d0d0;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 10 20 10 20;
+}
+
+.secondary-button:hover {
+
+    -fx-background-color: #404040;
+}
+
+.list-view {
+
+    -fx-background-color: #1f1f1f;
+
+    -fx-control-inner-background: #1f1f1f;
+
+    -fx-padding: 15;
+}
+
+.list-cell {
+
+    -fx-background-color: transparent;
+}
+
 .task-pane {
 
     -fx-background-color: linear-gradient(
@@ -33,8 +186,6 @@
             #343434,
             #2b2b2b
     );
-
-    -fx-cursor: hand;
 }
 
 .task-completed {
@@ -53,27 +204,360 @@
 
     -fx-border-width: 1;
 
-    -fx-opacity: 0.82;
+    -fx-opacity: 0.85;
 
     -fx-padding: 18;
+}
+.root {
 
-    -fx-effect: dropshadow(
-            gaussian,
-            rgba(0,0,0,0.25),
-            10,
-            0.15,
-            0,
-            3
+    -fx-background-color: #1f1f1f;
+}
+
+.main-root {
+
+    -fx-background-color: #1f1f1f;
+}
+
+.header {
+
+    -fx-background-color: #252525;
+
+    -fx-border-color: #333333;
+
+    -fx-border-width: 0 0 1 0;
+}
+
+.text-field {
+
+    -fx-background-color: #2b2b2b;
+
+    -fx-text-fill: #e0e0e0;
+
+    -fx-prompt-text-fill: #7a7a7a;
+
+    -fx-background-radius: 12;
+
+    -fx-border-radius: 12;
+
+    -fx-border-color: #3f3f3f;
+
+    -fx-border-width: 1;
+
+    -fx-padding: 10;
+
+    -fx-font-size: 14px;
+
+    -fx-pref-height: 42px;
+
+    -fx-pref-width: 260px;
+}
+
+.text-field:focused {
+
+    -fx-border-color: #4c8bf5;
+}
+
+.button {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #3a3a3a,
+            #2f2f2f
+    );
+
+    -fx-text-fill: #e0e0e0;
+
+    -fx-font-size: 14px;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-border-radius: 12;
+
+    -fx-border-color: #4a4a4a;
+
+    -fx-border-width: 1;
+
+    -fx-padding: 10 18 10 18;
+
+    -fx-cursor: hand;
+}
+
+.button:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #4a4a4a,
+            #3a3a3a
     );
 }
+
+.button:pressed {
+
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.button:focused {
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.accent-button {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #4c8bf5,
+            #356fe0
+    );
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14px;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 10 20 10 20;
+}
+
+.accent-button:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #5a98ff,
+            #437cf0
+    );
+}
+
+.secondary-button {
+
+    -fx-background-color: #343434;
+
+    -fx-text-fill: #d0d0d0;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 10 18 10 18;
+}
+
+.secondary-button:hover {
+
+    -fx-background-color: #404040;
+}
+
 .list-view {
 
     -fx-background-color: #1f1f1f;
+
     -fx-control-inner-background: #1f1f1f;
-    -fx-padding: 15;
+
+    -fx-padding: 18;
 }
 
 .list-cell {
 
     -fx-background-color: transparent;
+
+    -fx-padding: 0;
+}
+
+.task-pane {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #2b2b2b,
+            #242424
+    );
+
+    -fx-background-radius: 18;
+
+    -fx-border-radius: 18;
+
+    -fx-border-color: #3a3a3a;
+
+    -fx-border-width: 1;
+
+    -fx-padding: 18;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.35),
+            12,
+            0.2,
+            0,
+            4
+    );
+}
+
+.task-pane:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #343434,
+            #2b2b2b
+    );
+}
+
+.task-completed {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #1f3a2d,
+            #1a3026
+    );
+
+    -fx-background-radius: 18;
+
+    -fx-border-radius: 18;
+
+    -fx-border-color: #3fa86a;
+
+    -fx-border-width: 1;
+
+    -fx-opacity: 0.85;
+
+    -fx-padding: 18;
+}
+.overlay-root {
+
+    -fx-background-color: rgba(0,0,0,0.45);
+
+    -fx-alignment: center;
+}
+
+.sort-window {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #2a2a2a,
+            #232323
+    );
+
+    -fx-background-radius: 20;
+
+    -fx-border-radius: 20;
+
+    -fx-border-color: #3d3d3d;
+
+    -fx-border-width: 1;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.45),
+            25,
+            0.2,
+            0,
+            8
+    );
+
+    -fx-pref-width: 320;
+}
+.selected-sort {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #4c8bf5,
+            #356fe0
+    );
+
+    -fx-border-color: #7fb0ff;
+
+    -fx-border-width: 2;
+
+    -fx-border-radius: 12;
+
+    -fx-background-radius: 12;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(76,139,245,0.45),
+            14,
+            0.2,
+            0,
+            0
+    );
+}
+.button.selected-orange {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #ff9f43,
+            #ff7b1f
+    );
+
+    -fx-text-fill: white;
+
+    -fx-border-color: #ffc078;
+
+    -fx-border-width: 2;
+
+    -fx-border-radius: 12;
+
+    -fx-background-radius: 12;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(255,140,40,0.45),
+            16,
+            0.2,
+            0,
+            0
+    );
+}
+.note-window {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #2b2b2b,
+            #1f1f1f
+    );
+
+    -fx-background-radius: 20;
+
+    -fx-border-radius: 20;
+
+    -fx-border-color: #3d3d3d;
+
+    -fx-border-width: 1;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.45),
+            24,
+            0.2,
+            0,
+            8
+    );
+
+    -fx-pref-width: 420;
+}
+
+.danger-button {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #d9534f,
+            #b52b27
+    );
+
+    -fx-text-fill: white;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 12;
+
+    -fx-padding: 10 18 10 18;
+}
+
+.danger-button:hover {
+
+    -fx-background-color: linear-gradient(
+            to bottom right,
+            #e5635f,
+            #c93b37
+    );
 }

@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import javafx.scene.text.TextAlignment;
 import org.example.Practic.*;
@@ -21,57 +18,182 @@ import java.util.List;
 public class main_view extends BorderPane {
 
 
-    private SortingParams sortParam = SortingParams.BY_TIME;
-
+    public static SortingParams sortParam = SortingParams.BY_TIME;
+    private Button sortButton;
     public main_view(app app) {
-        System.out.println(this);
-        HBox header = new HBox();
-        header.setPrefHeight(60);
-        header.setStyle("-fx-background-color: #c9c9c9;");
 
-        Button add_Task = new Button("Добавить");
+        getStyleClass().add("main-root");
 
+        HBox header = new HBox(15);
 
-        add_Task.setOnAction(e -> {
+        header.getStyleClass().add("header");
+
+        header.setAlignment(Pos.CENTER_LEFT);
+
+        header.setPadding(
+                new Insets(15)
+        );
+
+        Button addTask =
+                new Button("Добавить");
+
+        addTask.getStyleClass()
+                .add("accent-button");
+
+        addTask.setOnAction(e -> {
             app.show_add_task_scene();
         });
 
+        TextField searchTextField =
+                new TextField();
 
+        searchTextField.setPromptText(
+                "Поиск по задачам"
+        );
 
-        Button open_sort_params = new Button("Сортировка");
-        open_sort_params.setOnAction(e -> {
-            app.show_windown_sort_params(this);
+        HBox.setHgrow(
+                searchTextField,
+                Priority.ALWAYS
+        );
 
+        Button searchButton =
+                new Button("Поиск");
+
+        searchButton.getStyleClass()
+                .add("button");
+        searchTextField.textProperty().addListener(
+                (obs, oldText, newText) -> {
+
+                    searchButton.getStyleClass()
+                            .remove("selected-orange");
+
+                    if(!newText.isEmpty()) {
+
+                        searchButton.getStyleClass()
+                                .add("selected-orange");
+                    }
+                });
+        searchButton.setOnAction(e -> {
+
+            String query =
+                    searchTextField.getText();
+
+            if(query.isEmpty()) {
+
+                setCenter(
+                        buildTasksList(
+                                app,
+                                TaskRepository.getTasks()
+                        )
+                );
+
+                return;
+            }
+
+            setCenter(
+                    buildTasksList(
+                            app,
+                            TaskRepository.searchTasks(query)
+                    )
+            );
         });
 
-        header.getChildren().addAll(add_Task, open_sort_params);
-setCenter(buildTasksList(app));
+        Button reset =
+                new Button("Сброс");
+
+        reset.getStyleClass()
+                .add("secondary-button");
+
+        reset.setOnAction(e -> {
+
+            sortParam = SortingParams.BY_TIME;
+
+            searchTextField.clear();
+
+            setCenter(
+                    buildTasksList(
+                            app,
+                            TaskRepository.getTasks()
+                    )
+            );
+        });
+
+        sortButton =
+                new Button("Сортировка");
+
+        sortButton.getStyleClass()
+                .add("button");
+if(sortParam!=SortingParams.BY_TIME){
+    sortButton.getStyleClass().add("selected-orange");
+
+}
+        sortButton.setOnAction(e -> {
+            app.show_windown_sort_params(this);
+        });
+
+        Region spacer = new Region();
+
+        HBox.setHgrow(
+                spacer,
+                Priority.ALWAYS
+        );
+
+        header.getChildren().addAll(
+                addTask,
+                sortButton,
+                spacer,
+                searchTextField,
+                searchButton,
+                reset
+        );
+
         setTop(header);
 
-
-
+        setCenter(
+                buildTasksList(
+                        app,
+                        TaskRepository.getTasks()
+                )
+        );
     }
+
+
 
 
     public void setSortParam(SortingParams sortParam) {
         this.sortParam = sortParam;
+        updateHeaderState();
         System.out.println(this);
         System.out.println(sortParam);
     }
+    private void updateHeaderState() {
 
-    private ListView<Task> buildTasksList(app app) {
+        sortButton.getStyleClass()
+                .remove("selected-orange");
 
-        ObservableList<Task> tasks =
-                TaskRepository.getTasks();
+        if(sortParam != SortingParams.BY_TIME) {
 
+            sortButton.getStyleClass()
+                    .add("selected-orange");
+        }
+    }
+    public void refreshTasks(app app) {
+
+        setCenter(buildTasksList(app, TaskRepository.getTasks()));
+    }
+    private ListView<Task> buildTasksList(app app, ObservableList<Task> tasksV) {
+
+        ObservableList<Task> tasks = tasksV;
+
+        tasks = sortingList(tasks);
         ListView<Task> listView =
                 new ListView<>(tasks);
 
         listView.setFocusTraversable(false);
         listView.setStyle("""
-        -fx-background-color: #1f1f1f;
-        -fx-padding: 15;
-    """);
+                    -fx-background-color: #1f1f1f;
+                    -fx-padding: 15;
+                """);
 
         listView.setCellFactory(param -> new ListCell<>() {
 
@@ -111,9 +233,9 @@ setCenter(buildTasksList(app));
                 );
 
                 setStyle("""
-                -fx-background-color: transparent;
-                -fx-padding: 0;
-            """);
+                            -fx-background-color: transparent;
+                            -fx-padding: 0;
+                        """);
             }
         });
 
@@ -123,29 +245,46 @@ setCenter(buildTasksList(app));
                 );
 
         label.setStyle("""
-        -fx-text-fill: #cfcfcf;
-        -fx-font-size: 20px;
-        -fx-font-weight: bold;
-
-        -fx-background-color:
-            linear-gradient(to bottom right,
-            #2f2f2f,
-            #252525);
-
-        -fx-padding: 25 40 25 40;
-
-        -fx-background-radius: 18;
-        -fx-border-radius: 18;
-
-        -fx-border-color: #3f3f3f;
-        -fx-border-width: 1;
-    """);
-    listView.getStyleClass().add("list-view");
+                    -fx-text-fill: #cfcfcf;
+                    -fx-font-size: 20px;
+                    -fx-font-weight: bold;
+                
+                    -fx-background-color:
+                        linear-gradient(to bottom right,
+                        #2f2f2f,
+                        #252525);
+                
+                    -fx-padding: 25 40 25 40;
+                
+                    -fx-background-radius: 18;
+                    -fx-border-radius: 18;
+                
+                    -fx-border-color: #3f3f3f;
+                    -fx-border-width: 1;
+                """);
+        listView.getStyleClass().add("list-view");
         listView.setPlaceholder(label);
 
         return listView;
     }
 
+    private ObservableList<Task> sortingList(ObservableList<Task> tasks) {
+        ObservableList<Task> sorted = FXCollections.observableArrayList(tasks);
+
+        switch (sortParam) {
+
+            case BY_COMPLETED -> sorted = sorted.filtered(
+                    Task::get_completed
+            );
+            case BY_BACK_COMPLETED -> sorted = sorted.filtered(
+                    task -> !task.get_completed()
+            );
+            case BY_BACK_TIME -> FXCollections.reverse(sorted);
+        }
+        return sorted;
+
+
+    }
 
 
 }
