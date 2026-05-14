@@ -81,12 +81,8 @@ public class window_change_note extends StackPane {
                     .add("accent-button");
 
             save.setOnAction(e1 -> {
-
-                task.changeNote(
-                        text,
-                        text_new.getText()
-                );
-
+                String newText = text_new.getText().isBlank() ? text : text_new.getText();
+                task.changeNote(text, newText);
                 app.show_main_scene();
             });
 

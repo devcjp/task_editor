@@ -28,8 +28,12 @@ public class change_task_menu extends VBox {
         Button button_save_and_exit = new Button("Сохранить");
         button_save_and_exit.getStyleClass().add("accent-button");
         button_save_and_exit.setOnAction(e -> {
-            task.setTask(input_name.getText(), input_task.getText());
+            String newName = input_name.getText().isBlank() ? task.getName() : input_name.getText();
+            String newTask = input_task.getText().isBlank() ? task.getTask() : input_task.getText();
+            task.setTask(newName, newTask);
             app.show_main_scene();
+
+
         });
 
         this.getChildren().addAll(input_name, input_task, button_save_and_exit);
