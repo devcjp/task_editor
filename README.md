@@ -17,7 +17,7 @@
 
 ## Скачать
 
-[![Download](https://img.shields.io/badge/Download-TaskManager_v1.0.0-blue?style=for-the-badge&logo=windows)](https://github.com/ВАШ_НИК/ВАШ_РЕПО/releases/download/v1.0.0/TaskManager-1.0.0.exe)
+[![Download](https://img.shields.io/badge/Download-TaskManager_v1.0.0-blue?style=for-the-badge&logo=windows)](https://github.com/devcjp/TaskEditorReleases/releases/download/v1.0.0/TaskManager-1.0.0.exe)
 
 # Запуск
 
