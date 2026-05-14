@@ -82,6 +82,7 @@ public class app extends Application {
 
     public void show_change_task_menu_scene(Task task) {
         scene = new Scene(new change_task_menu(this, task), 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/main.css").toExternalForm());
         show();
     }
 
