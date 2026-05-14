@@ -14,8 +14,7 @@
  - JavaFx
  - CSS
 ## Скриншоты
-![Main](screens/main.PNG)
-![Tasks](screens/mainWithTasks.PNG)
+![Main](screens/main.PNG) ![Tasks](screens/mainWithTasks.PNG)
 ![Search](screens/search_screen.PNG)
 ![Sort](screens/sortScreen.PNG)
 ![AddTask](screens/addTask.PNG)
