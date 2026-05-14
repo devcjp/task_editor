@@ -14,11 +14,11 @@
  - JavaFx
  - CSS
 ## Скриншоты
-![Main](src/main/screens/main.PNG)
-![Tasks](src/main/screens/mainWithTasks.PNG)
-![Search](src/main/screens/search_screen.PNG)
-![Sort](src/main/screens/sortScreen.PNG)
-![AddTask](src/main/screens/addTask.PNG)
+![Main](.src/main/screens/main.PNG)
+![Tasks](.src/main/screens/mainWithTasks.PNG)
+![Search](.src/main/screens/search_screen.PNG)
+![Sort](.src/main/screens/sortScreen.PNG)
+![AddTask](.src/main/screens/addTask.PNG)
 
 ## Скачать
 
