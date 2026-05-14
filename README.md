@@ -14,8 +14,6 @@
  - JavaFx
  - CSS
 ## Скриншоты
-
-## Скриншоты
 ![Main](screens/main.PNG)
 ![Tasks](screens/mainWithTasks.PNG)
 ![Search](screens/search_screen.PNG)
