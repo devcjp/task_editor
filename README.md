@@ -8,7 +8,7 @@
  - Поиск
  - Сортировка
  - Completed state
- - красивый ui
+ - Красивый темный ui
 ## Стэк
  - Java
  - JavaFx
@@ -17,7 +17,7 @@
 
 ## Скачать
 
-[![Download](https://img.shields.io/badge/Download-TaskManager_v1.0.0-blue?style=for-the-badge&logo=windows)](https://github.com/devcjp/task_editor/releases/download/v1.0.0/TaskManager-1.0.0.exe)
+[![Download](https://img.shields.io/badge/⬇️_СКАЧАТЬ-TaskManager_v1.0.0-FF6B35?style=for-the-badge&logo=windows&logoColor=white&labelColor=1a1a2e)](https://github.com/devcjp/task_editor/releases/download/v1.0.0/TaskManager-1.0.0.exe)
 
 # Запуск
 
